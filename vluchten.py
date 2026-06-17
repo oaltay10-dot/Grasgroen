@@ -13,6 +13,7 @@ import random
 import urllib.parse
 
 import streamlit as st
+import streamlit.components.v1 as components
 
 # --- Vertrek vanuit Nederland (code -> nette naam) ---
 VERTREK_LUCHTHAVENS = {
@@ -207,6 +208,26 @@ def bouw_zoeklinks(vertrek_code, bestemming_code, heen_datum, terug_datum, retou
 # ----------------- DE WEBSITE -----------------
 
 st.set_page_config(page_title="VluchtVergelijker", page_icon="✈️", layout="centered")
+
+# Travelpayouts "Drive"-script voor affiliate-tracking.
+# Streamlit staat geen code in de paginakop toe, dus we laden het script via een
+# klein onzichtbaar venstertje dat het aan de hoofdpagina toevoegt.
+components.html(
+    """
+    <script>
+      (function () {
+        var d = window.parent.document;
+        if (d.getElementById('tp-drive')) return;
+        var s = d.createElement('script');
+        s.id = 'tp-drive';
+        s.async = true;
+        s.src = 'https://tp-em.com/NTQwNjc2.js?t=540676';
+        d.head.appendChild(s);
+      })();
+    </script>
+    """,
+    height=0,
+)
 
 # Strakke, moderne, donkergrijze opmaak.
 st.markdown(
