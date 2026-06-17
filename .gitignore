@@ -1,0 +1,8 @@
+# Geheime sleutels nooit delen!
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
