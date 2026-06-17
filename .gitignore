@@ -1,6 +1,9 @@
 # Geheime sleutels nooit delen!
 .env
 
+# Lokale Claude-instellingen
+.claude/
+
 # Python
 __pycache__/
 *.pyc
